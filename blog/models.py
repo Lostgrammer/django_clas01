@@ -8,3 +8,9 @@ class Proyecto (models.Model):
 
     def __str__(self):
         return self.nombre+' -> '+self.caracteristica
+
+class Tarea (models.Model):
+    nombre = models.CharField(max_length=100)
+    proyecto = models.ForeignKey(Proyecto,on_delete=models.CASCADE) #llave foranea con borrado forma cascada
+    def __str__(self):
+        return self.nombre +' -> Proyecto: ' + self.proyecto.nombre
